@@ -1,0 +1,267 @@
+﻿@model Listningtour.Models.UserPropertyViewModel
+@{
+    ViewBag.Title = "Steps1";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+@using (Html.BeginForm("Steps1","MultiSteps", FormMethod.Post))
+
+{
+
+    @Html.AntiForgeryToken()
+
+        <!----3steps---------->
+    <div class="three-steps-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs m-tt">
+                    <li class="active"><a data-toggle="tab" href="#Step1">Step 1</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="container">
+                        <div class="main-form">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">Property Address*</label>
+                                        @Html.TextBoxFor(m => m.PropertyAddress, new { placeholder = Html.DisplayNameFor(m => m.PropertyAddress), @class = "form-control input-lg", @required = "required" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Zip Code*</label>
+                                        @Html.TextBoxFor(m => m.Zipcode, new { placeholder = Html.DisplayNameFor(m => m.Zipcode),  @class = "form-control input-lg", @required = "required" })
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Area Sq.*</label>
+                                        @Html.TextBoxFor(m => m.Area, new { placeholder = Html.DisplayNameFor(m => m.Area), @class = "form-control input-lg", @required = "required" })
+                                    </div>
+
+                                    <div class="form-group login-form">
+                                        <label for="usr">Property Type*</label>                                     
+                                          <select id="countryDropDownList"  name="Propertytype">
+                                          <option value=""  name="Propertytype" >select</option>
+                                          </select>   
+                                                                         
+                                        @*
+                                        @Html.DropDownList("Propertytype", new List<SelectListItem> { new SelectListItem { Text = "Any", Value = "Any" }, new SelectListItem { Text = "Residential", Value = "Residential" }, new SelectListItem { Text = "Commercial", Value = "Commercial" }, new SelectListItem { Text = "Condo", Value = "Condo" }, })*@
+                                    </div>
+
+                                
+
+                                    <div class="form-group login-form">
+                                        <label for="sel1">Type of Home*</label>                                    
+                                            <select id="stateDropDownList" name="Typesofhome">
+                                                <option value="" name="Typesofhome">select</option>
+                                            </select>
+                                       
+                                        @*
+                                        @Html.TextBoxFor(m => m.Typesofhome, new { placeholder = Html.DisplayNameFor(m => m.Typesofhome), @class = "form-control input-lg", @required = "required" })*@
+
+                                    </div>
+
+                                    <div class="form-group ">
+                                        <label for="usr">Taxes* </label>
+                                        @Html.TextBoxFor(m => m.Taxes, new { placeholder = Html.DisplayNameFor(m => m.Taxes), @class = "form-control input-lg", @required = "required" })
+                                    </div>
+
+                                        <div class="form-group">
+                                            <label for="usr" >Youtube Link 
+                                            <div class="dropdown itip">
+    <button class="dropbtn"><i class="fas fa-info"></i></button>
+    <div class="dropdown-content">
+        <ul>
+            <li>Open www.youtube.com</li>
+            <li>Select your Video</li>
+            <li>Click On share Button</li>
+            <li>then Click on Embed</li>
+            <li>Copy the code between src="----"</li>
+            <li>Paste on yourtube box</li>
+        </ul>
+    </div>
+                                            </div>
+                                            </label>
+                                            @Html.TextBoxFor(m => m.YoutubeLink, new { placeholder = Html.DisplayNameFor(m => m.YoutubeLink), @class = "form-control input-lg" })
+                                        </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+
+
+                                    <div class="form-group">
+                                        <label for="usr">MLS*</label>
+                                        @Html.TextBoxFor(m => m.MLS, new { placeholder = Html.DisplayNameFor(m => m.MLS), @class = "form-control input-lg", @required = "required" })
+                                    </div>
+
+
+                                    <div class="form-group login-form">
+                                        <label for="usr">Status*</label>   
+                                        @Html.DropDownList("Status", new List<SelectListItem> { new SelectListItem { Text = "Sales", Value = "Sales" }, new SelectListItem { Text = "Lease", Value = "Lease" }, })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pwd">Bedrooms*</label>
+                                        @Html.TextBoxFor(m => m.Bedrooms, new { placeholder = Html.DisplayNameFor(m => m.Bedrooms), @type = "Number", @class = "form-control input-lg", @required = "required" })
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="pwd">Price*</label>
+                                        @Html.TextBoxFor(m => m.Price, new { placeholder = Html.DisplayNameFor(m => m.Price), @class = "form-control post_back my_size_1", @required = "required" , @onkeyup = "depositamt(this.value)" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pwd">Washrooms*</label>
+                                        @Html.TextBoxFor(m => m.Washrooms, new { placeholder = Html.DisplayNameFor(m => m.Washrooms), @type = "Number", @class = "form-control input-lg", @required = "required" })
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr">Property Description*</label>
+                                        @Html.TextAreaFor(m => m.PropertyDescription, new { placeholder = Html.DisplayNameFor(m => m.PropertyDescription), @class = "form-control input-lg", @required = "required" , @rows = "6" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="s-c">
+
+                                        <button type="submit" name="BtnNext" value="Next" class="btn btn-default" >Next</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!----3steps----end------>
+
+}
+
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+
+
+
+
+<script src="~/scripts/jquery-1.10.2.js"></script>
+
+
+
+<script>
+
+    $(function () {
+
+        AjaxCall('/MultiSteps/GetCountries', null).done(function (response) {
+            if (response.length > 0) {
+                $('#countryDropDownList').html('');
+                var options = '';
+                options += '<option value="Select">Select</option>';
+                for (var i = 0; i < response.length; i++) {
+                    options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                }
+                $('#countryDropDownList').append(options);
+
+            }
+        }).fail(function (error) {
+            alert(error.StatusText);
+        });
+
+        $('#countryDropDownList').on("change", function () {
+            var country = $('#countryDropDownList').val();
+            var obj = { country: country };
+            AjaxCall('/MultiSteps/GetStates', JSON.stringify(obj), 'POST').done(function (response) {
+                if (response.length > 0) {
+                    $('#stateDropDownList').html('');
+                    var options = '';
+                    options += '<option value="Select">Select</option>';
+                    for (var i = 0; i < response.length; i++) {
+                        options += '<option value="' + response[i] + '">' + response[i] + '</option>';
+                    }
+                    $('#stateDropDownList').append(options);
+
+                }
+            }).fail(function (error) {
+                alert(error.StatusText);
+            });
+        });
+
+    });
+
+    function AjaxCall(url, data, type) {
+        return $.ajax({
+            url: url,
+            type: type ? type : 'GET',
+            data: data,
+            contentType: 'application/json'
+        });
+    }
+</script>
+
+
+
+<script>
+debugger;
+function depositamt(value) {
+debugger;
+var res = Comma(value);
+$('#Price').val(res);
+
+}
+function Comma(Num) { //function to add commas to textboxes
+debugger;
+Num += '';
+Num = Num.replace(',', ''); Num = Num.replace(',', ''); Num = Num.replace(',', '');
+Num = Num.replace(',', ''); Num = Num.replace(',', ''); Num = Num.replace(',', '');
+x = Num.split('.');
+x1 = x[0];
+x2 = x.length > 1 ? '.' + x[1] : '';
+var rgx = /(\d+)(\d{3})/;
+while (rgx.test(x1))
+x1 = x1.replace(rgx, '$1' + ',' + '$2');
+return x1 + x2;
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

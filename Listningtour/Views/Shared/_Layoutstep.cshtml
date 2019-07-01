@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Listing Tour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/media.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/lightgallery.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/lightbox.min.css">
+    <link rel="stylesheet" href="~/css/bannerscollection_zoominout.css" type="text/css" />
+    <link href="~/css/jquery.fancybox.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+<body>
+    <!---header------>
+    <div class="header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="myheader">
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="Index">
+                                        <img src="~/Assets/img/logo.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="collapse navbar-collapse  navbar-right" id="myNavbar">
+                                    <ul class="nav navbar-nav">
+                                        @{
+                                            //Store the Controller and Action in the format : "Controller/Action" so it can easily be checked
+                                            string ctrName = String.Format("{0}/{1}", ViewContext.RouteData.Values["controller"], ViewContext.RouteData.Values["action"]);
+                                        }
+                                        <li @if (ctrName == "Account/Index")   { <text> class="active" </text>   }>@Html.ActionLink("Logout", "Index", "Account")</li>
+                                        <li @if (ctrName == "Account/Support") { <text> class="active" </text>   }>@Html.ActionLink("Support", "Support", "Account")</li>
+                                        <li @if (ctrName == "Account/Support") { <text> class="active" </text>   }>@Html.ActionLink("How its works", "How_its_work", "Account")</li>
+
+
+
+
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---header----end-->
+
+    <div>
+        @RenderBody()
+    </div>
+</body>\
+
+
+
+<div class="footerwrapper">
+    <div class="container">
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="fleft">
+                    </div>
+                    <p>© 2019 MyListingTour.com </p>
+                </div>
+                <div class="col-md-4">
+                    <div class="fcenter">
+                        <div><a target="_blank" href="/page/terms-and-condtions">Terms &amp; Conditions</a> | <a target="_blank" href="/page/privacy-policy">Privacy Policy</a><a target="_blank" href="/page/disclaimer">Disclaimer</a> | . </div>
+                        <div class="social">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="fright">
+                        <a></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</html>
+
+
+<script src="~/js/wow.js"></script>
+<script>
+new WOW().init();
+</script>
+<script src="~/js/default.js"></script>
+<script src="~/js/lightbox-plus-jquery.min.js"></script>
+<script src="~/js/jquery-1.12.4.min.js"></script>
+<script src="~/js/lightgallery-all.min.js"></script>
+<script src="~/js/scrolling-nav.js"></script>
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/wow.min.js"></script>
+<script src="~/js/core.min.js"></script>
+<script src="~/js/jquery.unveil.js"></script>
+<script src="~/js/jquery.fancybox.pack.js"></script>
+<script src="~/js/bannerscollection_zoominout.js"></script>
+<script src="~/js/jquery.ui.touch-punch.min.js"></script>
+
+
+<script>
+    new WOW().init();
+
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#lightgallery').lightGallery();
+    });
+
+</script>
+
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('.nav-toggle').click(function() {
+            var collapse_content_selector = $(this).attr('href');
+            var toggle_switch = $(this);
+            $(collapse_content_selector).toggle(function() {
+                if ($(this).css('display') == 'none') {
+                    toggle_switch.html('Read More');
+                } else {
+                    toggle_switch.html('Read Less');
+                }
+            });
+        });
+
+    });
+
+</script>
+
+<!------slider------->
+
+<script>
+    if (typeof(jqloaded) == 'function')
+        jqloaded();
+
+</script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script>
+    startVwt();
+    jQuery('#charts').accordion({
+        activate: function(event, ui) {
+            for (i in objCharts)
+                objCharts[i].resize();
+        }
+    });
+
+</script>
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-32843201-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+<style>
+    .sections > div:nth-child(odd) {
+        background: linear-gradient(#d72523, white);
+    }
+
+    .sections > div:nth-child(even) {
+        background: none repeat scroll 0 0 #ffffff;
+    }
+
+    body {
+        color: #2b2b2b;
+        background-color: #ffffff;
+    }
+
+    #page_title {
+        background-color: #ffffff;
+    }
+
+    #agent_info h3 {
+        color: #2b2b2b;
+    }
+
+    h2,
+    .pHeader {
+        color: #434343 !important;
+    }
+
+    .headerColor {
+        color: #434343;
+    }
+
+    .textColor {
+        color: #2b2b2b;
+    }
+
+    #agent,
+    #agent_info {
+        background-color: #ffffff;
+    }
+
+
+
+
+
+
+</style>
+
+

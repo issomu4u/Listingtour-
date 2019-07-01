@@ -1,0 +1,224 @@
+﻿@model Listningtour.Models.Dto.DashboardData
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+
+<div class="dashboard--wrapper">
+    <div class="container">
+        <div class="dashboard-area">
+            <div class="row">
+                <div class="d-upper ">
+                    <div class="col-md-5">
+                        <div class="d-pic animated  bounceInLeft">                         
+                                @if (Model.PhotoPath == null || Model.PhotoPath == "")
+                                {
+                                    <img src="~/assets/img/profile-cover.jpg" style="height:50%;width:50%" />
+                                }
+                                else
+                                {
+                                    <img src=@Model.PhotoPath  alt="profile-img" class="img-thumbnail img-responsive" style="height:50%;width:50%" />
+                                }
+
+                                <i class="fa fa-user hide"></i>
+                            
+                         
+                            <h1>
+                                <tr>
+                                    <td>@Html.DisplayFor(x => x.Name)</td> <td>@Html.DisplayFor(x => x.Middlename)</td> <td>@Html.DisplayFor(x => x.Lastname)</td>
+                                </tr>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="d-btn animated  bounceInRight">
+                            <ul class="list-inline">                         
+                                @*<li><button type="button" onclick="location.href='@Url.Action("Steps1","MultiSteps",new { Type = "CreateTour" })'">Create Tour</button></li>*@
+
+
+                                <li><button type="button" onclick="location.href='@Url.Action("payment","Dashboard")'">Create Tour</button></li> 
+                                
+                                                                                                                                                                                
+                                @*<li><button type="button" onclick="location.href='@Url.Action("Steps1","MultiSteps")'">CreateTour</button></li>*@      
+                                
+                                                                                                                                                                             
+                                <li><button type="button" onclick="location.href='@Url.Action("Edit","Dashboard", new { Userinfoid = Model.Userinfoid })'">Edit Profile</button></li>
+                           </ul>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="d_main">
+                <div class="row">
+                    <div class="col-md-5">
+                        <!---TABLE--->
+                        <div class="d-table">
+                            <table class="table table-hover">
+
+                                <tbody>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.City)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.City)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.Email)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.Zipcode)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.Zipcode)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.Designation)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.Designation)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.CellNo)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.CellNo)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.Brokerage)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.Brokerage)</td>
+                                              
+                                    </tr>
+
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.OfficeAddress)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.OfficeAddress)</td>
+                                    </tr>
+
+
+
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.OfficeNo)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.OfficeNo)</td>
+                                    </tr>
+
+                                   
+
+                                    <tr>
+                                        <th>@Html.DisplayNameFor(model => model.Website)</th>
+                                        <td>@Html.DisplayFor(modelItem => Model.Website)</td>
+                                    </tr>
+                                        <th>@Html.DisplayNameFor(model => model.CompanyLogo)</th>
+                                        <td>
+    <div class="animated">
+        @if (Model.CompanyLogo == null || Model.CompanyLogo == "")
+        {
+            <img src="~/assets/img/profile-cover.jpg" style="height:50%;width:50%" />
+        }
+        else
+        {
+            <img src=@Model.CompanyLogo alt="profile-img" class="img-thumbnail img-responsive" style="height:30%;width:30%" />
+        }
+
+    </div>
+
+</td>
+
+                                    <tr>
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+                 
+
+                    <div class="col-md-7">
+                        <div class="dt_right">
+                            <h3>Latest Tour Links</h3>
+                            @if(Model.PublishedProperties.Count()>0)
+                            {
+
+                            <div class="d-table">
+                                <table class="table table-hover">
+
+                                    <tbody>
+                                        <tr>
+                                            <td>S.NO</td>
+                                            <td>Property Address</td>
+                                            <td>Tour Links</td>
+                                        </tr>
+                                        @{
+                                            var count = 0;
+                                            foreach (var item in @Model.PublishedProperties)
+                                            {
+                                                count++;
+                                                <tr>
+                                                    <th>@count</th>
+                                                    <td>@item.Address</td>
+                                                    <td>@item.ProperyUrl</td>
+                                                </tr>
+
+                                            }
+
+                                        }
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                                            }
+                                            else
+                                            {
+                                                <img src="" />
+                                            }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

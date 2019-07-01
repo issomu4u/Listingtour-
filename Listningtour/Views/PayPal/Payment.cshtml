@@ -1,0 +1,57 @@
+﻿
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+
+@using (Html.BeginForm("ValidateCommand", "PayPal"))
+{
+    <div class="new_form">
+        <div class="container">
+            <div class="row" style="margin:130px">
+               
+                <div class="col-md-3">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WEH4F7XX8MY66">
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+                @*<div class="col-md-6">
+                    <div class="form_set">*@
+                       
+                        @*<table>
+                            <tr>
+                                <td>
+                                    Product Name:
+                                </td>
+                                <td>
+                                    <input type="text" name="product" value="Listning Tour" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Total Price $:
+                                </td>
+                                <td>
+                                    <input type="text" name="totalPrice" value="25" readonly />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td class="my_btn">
+                                    <input type="submit" name="btnConfirm" value="Check Out with Paypal" />
+                                </td>
+                            </tr>
+                        </table>*@
+                    @*</div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+}
+

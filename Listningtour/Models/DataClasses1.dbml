@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Mylistingtour" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=AMEBA-PC\SQLEXPRESS;Initial Catalog=Mylistingtour;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MylistingtourConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Image" Member="Images">
+    <Type Name="Image">
+      <Column Name="ImgId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="thumbnails" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhotoPath" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StepId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Step_Image" Member="Step" ThisKey="StepId" OtherKey="Stepid" Type="Step" IsForeignKey="true" />
+      <Association Name="User_Image" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Paypaldata" Member="Paypaldatas">
+    <Type Name="Paypaldata">
+      <Column Name="PaypalId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Cmd" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="business" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="no_shipping" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="[@return]" Member="_return" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="cancel_return" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="notify_url" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="currency_code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="item_name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="amount" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="actionURL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Paypaldata" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PublishedProperty" Member="PublishedProperties">
+    <Type Name="PublishedProperty">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Guid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PublishedUrl" Type="System.String" DbType="NVarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="StepId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_PublishedProperty" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Step" Member="Steps">
+    <Type Name="Step">
+      <Column Name="Stepid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PropertyAddress" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Area" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Propertytype" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Typesofhome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Taxes" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Bedrooms" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Price" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Washrooms" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PropertyDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Issave" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Createddate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="YoutubeLink" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="MLS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Step_Image" Member="Images" ThisKey="Stepid" OtherKey="StepId" Type="Image" />
+      <Association Name="User_Step" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Support" Member="Supports">
+    <Type Name="Support">
+      <Column Name="SupportId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Subject" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DescribeYourIssue" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsEmailVerified" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ActivationKey" Type="System.String" DbType="VarChar(36)" CanBeNull="true" />
+      <Association Name="User_Image" Member="Images" ThisKey="Id" OtherKey="UserId" Type="Image" />
+      <Association Name="User_Paypaldata" Member="Paypaldatas" ThisKey="Id" OtherKey="UserId" Type="Paypaldata" />
+      <Association Name="User_PublishedProperty" Member="PublishedProperties" ThisKey="Id" OtherKey="UserId" Type="PublishedProperty" />
+      <Association Name="User_Step" Member="Steps" ThisKey="Id" OtherKey="UserId" Type="Step" />
+      <Association Name="User_User" Member="User2" ThisKey="Id" OtherKey="Id" Type="User" Cardinality="One" />
+      <Association Name="User_User1" Member="User4" ThisKey="Id" OtherKey="Id" Type="User" Cardinality="One" />
+      <Association Name="User_Userinfo" Member="Userinfos" ThisKey="Id" OtherKey="UserId" Type="Userinfo" />
+      <Association Name="User_User" Member="User1" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_User1" Member="User3" ThisKey="Id" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Userinfo" Member="Userinfos">
+    <Type Name="Userinfo">
+      <Column Name="Userinfoid" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Zipcode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Designation" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CellNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Brokerage" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OfficeAddress" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="OfficeNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Website" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PhotoPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Middlename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Lastname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CompanyLogo" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="User_Userinfo" Member="User" ThisKey="UserId" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

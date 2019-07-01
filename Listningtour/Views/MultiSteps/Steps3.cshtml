@@ -1,0 +1,520 @@
+﻿@model Listningtour.Models.UserPropertyViewModel
+
+@{
+    Layout = null;
+}
+
+
+@*@using (Html.BeginForm("Steps3","MultiSteps"))
+
+    {*@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Listing Tour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/css/media.css">
+    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/css/lightgallery.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/lightbox.min.css">
+    <link rel="stylesheet" href="~/css/bannerscollection_zoominout.css" type="text/css" />
+    <link href="~/css/jquery.fancybox.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+
+<div class="gheader_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="gnav">
+                    <nav class="navbar navbar-inverse f_nav">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo-j">
+                                    <a class="navbar-brand" href="gellery2.html">
+                                        <img src="img/logo1.jpg" alt="">
+                                    </a>
+                                </div>
+
+                            </div>
+                            <div class="collapse navbar-collapse" id="myNavbar">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#c_id" class="js-scroll-trigger">Contact</a></li>
+                                    <li><a href="#g_id" class="js-scroll-trigger">Video</a></li>
+                                    <li><a href="#slider_id" class="js-scroll-trigger">Slideshow</a></li>
+                                    <li><a href="#m_id" class="js-scroll-trigger">Local Amenities</a></li>
+                                    <li><a href="#gallery_id" class="js-scroll-trigger">Gallery</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<body>
+    @*<div class="sbtn3">
+        <ul class="m-tt">
+            <li><a  href="#Step3">Step 3</a></li>
+        </ul>
+    </div>*@
+   
+
+
+    <div class="gmain_heading">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Welcome to @Model.PropertyAddress</h1>
+            </div>
+        </div>
+    </div>
+    <!---header----end-->
+    <!--contact--sec--->
+    <div id="c_id">
+        <div class="contactsec-wrapper">
+            <div class="container">
+                <div class="cont-area">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="client-pic">
+                                <img src="@Model.User.PhotoPath" alt="" class="img-thumbnail img-responsive">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="client-info">
+                                <h1>@Model.User.Name @Model.User.Lastname<small>@Model.User.Designation</small></h1>
+
+                               @TempData["Fullurl"]
+
+                                <h2><i class="fas fa-phone-volume"></i>@Model.User.CellNo</h2>
+                                <p id="kjkj"><i class="fas fa-envelope"></i>@Model.User.Email</p>
+                                <p><i class="fas fa-globe-europe"></i>@Model.User.Website</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="client-logo">
+                                <img src="@Model.User.CompanyLogo" alt="" class="img-thumbnail img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--contact--sec---end-->
+    <!--gvideo---->
+    @if (Model.YoutubeLink != "" && Model.YoutubeLink!=null)
+    {
+        <div id="g_id">
+            <div class="gvideo-wrapper">
+                <div class="container">
+                    <div class="gvideo">
+                        <div class="gh">
+                            <h1>Video Tour</h1>
+                          </div>
+                      
+
+                            <iframe width="100%" height="515" src="@Model.YoutubeLink" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+    <!--gvideo---->
+    <!----slider---------->
+    <div id="slider_id">
+        <div class="my-slider-wrapper">
+            <!-- Page Content-->
+            <main class="page-content">
+                <div class="sections">
+                    <div id="photos">
+                        <div class="container" id="GoToGallery" style="margin:0; padding:0; width: 100%; overflow: hidden">
+                            <!---slider----->
+                            <div style="text-align: center">
+                                <div id="content-vwt" class="section" style="margin: 0 auto">
+                                    <div class="gHolder"></div>
+                                    <div class="gHolderTop"></div>
+                                    <div class="gHolderBottom"></div>
+                                    <div class="gControlls"></div>
+                                    <div id="bannerscollection_zoominout_opportune">
+                                        <div class="myloader"></div>
+                                        @if (Model.Images!=null)
+                                        {
+                                            <ul class="bannerscollection_zoominout_list">
+                                                @foreach (var item in Model.Images)
+                                                {
+                                                    <li data-initialZoom="1.28" data-finalZoom="1" data-horizontalPosition="center" data-verticalPosition="center" data-bottom-thumb="@item.PhotoPath" data-zoomEasing="ease-out" data-text-id="" data-duration="5.2" data-autoPlay="5.4"><img src="@item.PhotoPath" alt="" style="width: 1920px; height: 1282px" /></li>
+                                                }
+
+                                            </ul>
+                                        }
+                                       
+
+                                    </div>
+                                    <script>
+                                        var vwt_content = '';
+
+                                        vwt_loaded = false;
+
+                                        function startVwt() {
+                                            if (typeof(GoToGallery) != 'undefined')
+                                                var Margin = 0;
+                                            else
+                                                var Margin = 50;
+                                            if (!vwt_loaded) {
+                                                var vwt_h = $(window).height() - Margin;
+                                                $('#GoToGallery').css({
+                                                    'height': vwt_h + 230 + 'px'
+                                                });
+                                                $('#content-vwt').css({
+                                                    'height': vwt_h + 'px',
+                                                    'min-height': vwt_h + 'px',
+                                                    'width': $(window).height() * 1.5 - Margin + 'px'
+                                                });
+
+                                                //$('#bannerscollection_zoominout_opportune img').css({width:$(window).width(), height:vwt_h});
+                                                $('#bannerscollection_zoominout_opportune img').each(function(i, val) {
+                                                    var w = $(val).prop('width');
+                                                    $(val).css({
+                                                        width: $(window).height() * 1.5 - Margin,
+                                                        height: vwt_h
+                                                    });
+
+
+                                                });
+                                                $('#bannerscollection_zoominout_opportune').bannerscollection_zoominout({
+                                                    skin: 'generous',
+                                                    autoPlay: 0,
+                                                    responsive: true,
+                                                    width: $(window).height() * 1.5 - Margin,
+                                                    height: vwt_h,
+                                                    fadeSlides: true,
+                                                    showCircleTimer: true,
+                                                    showNavArrows: true,
+                                                    showBottomNav: true,
+                                                    enableTouchScreen: true,
+                                                    thumbsWrapperMarginTop: 25,
+                                                    pauseOnMouseOver: true
+                                                });
+                                                vwt_loaded = true;
+
+                                            }
+                                        };
+
+                                    </script>
+
+                                </div>
+                            </div>
+                            <!---slider----->
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!----slider---------->
+                <!-----property info----->
+
+                <div class="pro_info_wrapper">
+                    <div class="container">
+                        <div class="pi_h">
+                            <h1>Property information</h1>
+                            <table style="width:100%; border:1px solid #000;">
+                                <tr>
+                                    <td colspan="3" style="color: #d72523; font-size: 20px; font-weight: bold;"><b>Price</b> <span>@Html.DisplayFor(modelItem => Model.Price)</span></td>
+                                </tr>
+
+                                <tr>
+                                    <td><b>MLS:</b> <span>@Html.DisplayFor(modelItem => Model.MLS)</span></td>
+                                    <td><b>Status:</b> <span>@Html.DisplayFor(modelItem => Model.Status)</span></td>
+                                    <td><b>Type:</b> <span>@Html.DisplayFor(modelItem => Model.Propertytype)</span></td>
+                                </tr>
+                                 <tr>
+                                    <td><b>Beds:</b> <span>@Html.DisplayFor(modelItem => Model.Bedrooms)</span></td>
+                                    <td><b>Baths:</b> <span>@Html.DisplayFor(modelItem => Model.Washrooms)</span></td>
+                                    <td><b>Area:</b> <span>@Html.DisplayFor(modelItem => Model.Area)</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!--map---->
+                <div id="m_id">
+                    <div class="g-map-wrapper">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="g-map">
+                                        <h1>Address</h1>
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d59757.796710265626!2d78.92786057091189!3d20.593680476236017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m5!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!3m2!1d20.593684!2d78.96288!4m0!5e0!3m2!1sen!2sin!4v1556697324792!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--map--end-->
+                <!--gallery---->
+
+
+                <div id="gallery_id">
+                    <div class="gallery-wrapper">
+                        <div class="container">
+                            <div class="gallery_bar">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="gallery col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="g-h">
+                                                <h1>Gallery</h1>
+                                            </div>
+                                        </div>
+
+
+
+                                        @foreach (var item in Model.Images)
+                                        {
+                                            <div class="gallery_product col-lg-6 col-md-6 col-sm-6 col-xs-12 filter hdpe">
+                                                <a href="@item.PhotoPath" data-lightbox="gallery_product"> <img src="@item.PhotoPath" class="img-responsive thumbnail img_gl"></a>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+              @using (Html.BeginForm("Steps3", "MultiSteps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+              {
+
+                <div class="sbtn3">
+                    <ul class="m-tt">
+                        <li>
+                        
+                            <div class="l-btn">
+                                <button type="button" onclick="backoperation()">Back</button>
+                                <script>function backoperation() { window.location.href = "@Url.Action("Steps2", "MultiSteps")"; }</script>
+                                <button type="submit" value="Post" class="">Publish</button>
+                            </div>
+                        
+                        </li>
+                    </ul>
+                </div>
+
+
+
+
+
+                    }
+
+                    <!-----footer------>
+                    <div class="gfooterwrapper">
+                        <div class="container">
+                            <div class="gfooter">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>© 2019 MyListingTour.com / Designed by Only4Agents</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-----footer------>
+
+</body>
+
+</html>
+
+
+<script src="~/js/default.js"></script>
+<script src="~/js/lightbox-plus-jquery.min.js"></script>
+<script src="~/js/jquery-1.12.4.min.js"></script>
+<script src="~/jsjs/lightgallery-all.min.js"></script>
+<script src="~/js/scrolling-nav.js"></script>
+<script src="~/js/jquery.easing.min.js"></script>
+<script src="~/js/wow.js"></script>
+<script src="~/js/core.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.unveil.js"></script>
+<script type="text/javascript" src="~/js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script type="text/javascript" src="~/js/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="~/js/bannerscollection_zoominout.js"></script>
+
+
+
+<script>
+    new WOW().init();
+
+</script>
+@*<script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5ccaa4ca4b94860012b42f29&product=sticky-share-buttons' async='async'></script>*@
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#lightgallery').lightGallery();
+    });
+
+</script>
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script');
+        ga.type = 'text/javascript';
+        ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script>
+    $(document).ready(function() {
+        $('.nav-toggle').click(function() {
+            var collapse_content_selector = $(this).attr('href');
+            var toggle_switch = $(this);
+            $(collapse_content_selector).toggle(function() {
+                if ($(this).css('display') == 'none') {
+                    toggle_switch.html('Read More');
+                } else {
+                    toggle_switch.html('Read Less');
+                }
+            });
+        });
+
+    });
+
+</script>
+
+<!------slider------->
+<script>
+    if (typeof(jqloaded) == 'function')
+        jqloaded();
+
+</script>
+<script>
+    startVwt();
+    jQuery('#charts').accordion({
+        activate: function(event, ui) {
+            for (i in objCharts)
+                objCharts[i].resize();
+        }
+    });
+
+</script>
+
+
+
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-32843201-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+<style>
+    .sections > div:nth-child(odd) {
+        background: linear-gradient(#d72523, white);
+    }
+
+    .sections > div:nth-child(even) {
+        background: none repeat scroll 0 0 #ffffff;
+    }
+
+    body {
+        color: #2b2b2b;
+        background-color: #ffffff;
+    }
+
+    #page_title {
+        background-color: #ffffff;
+    }
+
+    #agent_info h3 {
+        color: #2b2b2b;
+    }
+
+    h2,
+    .pHeader {
+        color: #434343 !important;
+    }
+
+    .headerColor {
+        color: #434343;
+    }
+
+    .textColor {
+        color: #2b2b2b;
+    }
+
+
+
+    .l-btn button {
+    background: #ffb400;
+    border: none;
+    padding: 9px 30px;
+    font-size: 17px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #222;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+    #agent,
+    #agent_info {
+        background-color: #ffffff;
+    }
+</style>

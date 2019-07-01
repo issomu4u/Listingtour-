@@ -1,0 +1,141 @@
+﻿@model Listningtour.Models.UserModel
+@{
+    ViewBag.Title = "Signup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+ <!----Signup---------->
+@using (Html.BeginForm("Signups", "Account"))
+{
+
+            <div class="login-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="login-area">
+                                <div class="login-h">
+                                    <h1 >SIGN UP</h1>
+                                </div>
+
+                             
+                                <div class="login-form">
+                                   
+                                   
+                                    <div class="form-group">
+                                        <label for="usr">Email</label>
+                                        @Html.TextBoxFor(m => m.Email, new{ placeholder = Html.DisplayNameFor(m => m.Email),Id = "Email", @class = "form-control input-lg", @type = "Email",@required = "required"})
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr">Password</label>
+                                        @Html.PasswordFor(m => m.Password, new { placeholder = Html.DisplayNameFor(m => m.Password), id = "Password", @class = "form-control input-lg", @type = "Password", @required = "required" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="usr"> Confirm Password</label>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = Html.DisplayNameFor(m => m.ConfirmPassword), id ="ConfirmPassword", @class = "form-control input-lg", @type = "Password", @required = "required" })
+                                      
+                                        
+                                    </div>
+
+
+
+
+                                    <div class="login-rdia">
+                                        <input required="required" value="1" name="User[agree]" id="User_agree" type="checkbox">
+                                        <label for="User_agree" style="display:inline; font-weight:normal;">
+                                            I have read and understood the 
+
+                                            <a target="_blank" href="@Url.Action("Terms_Conditions","Account")">Terms &amp; conditions</a>, 
+                                            <a target="_blank" href="@Url.Action("Privacy_Policy","Account")">Privacy policy</a> and                                             
+                                            <a target="_blank" href="@Url.Action("Disclaimer","Account")">Disclaimer</a>
+
+                                        </label>
+                                    </div>
+
+                                    <ul class="list-inline pull-right cf">
+                                      
+                                        <li>
+                                            <a href="#" class="text-success" onclick="location.href='@Url.Action("Login", "Account")'">Have an account?</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" onclick="location.href='@Url.Action("ForgotPassword","Account")'">Forgot Password?</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="l-btn">
+                                        <button type="submit" id="btnSubmit" value="create" class="">Register</button>
+                                
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3"></div>
+                    </div>
+                </div>
+            </div>
+}
+                <!----Signup------->
+               
+<!----Sweet Alert---->
+
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/sweetalert.js"></script>
+
+@if (@ViewBag.data != null)
+{
+    <script>
+     window.onload = function(){
+     sweetAlert("@ViewBag.data");
+       }
+    </script>
+}
+<!----Sweet Alert End---->
+
+
+
+
+@if (@ViewBag.Message != null)
+{
+    <script>
+     window.onload = function(){
+     sweetAlert("@ViewBag.Message");
+       }
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(function ()
+    {
+        $("#btnSubmit").click(function () {
+            var password = $("#Password").val();
+            var confirmPassword = $("#ConfirmPassword").val();
+             if (password != confirmPassword&& confirmPassword!="") {
+                 sweetAlert("Password & Confirm Password do not match.");
+                return false;
+            }
+            return true;
+        });
+    });
+</script>

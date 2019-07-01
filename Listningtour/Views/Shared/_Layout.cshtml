@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <title>My Listing Tour</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Assets/css/style.css">
+    <link rel="stylesheet" href="~/Assets/css/media.css">
+    <link rel="stylesheet" href="~/Assets/css/animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+
+</head>
+<body>
+
+    <!---header------>
+    <div class="header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="myheader">
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="../Account/Index">
+                                        <img src="~/Assets/img/logo.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="collapse navbar-collapse  navbar-right" id="myNavbar">
+                                    <ul class="nav navbar-nav">
+                                        @{
+                                            //Store the Controller and Action in the format : "Controller/Action" so it can easily be checked
+                                            string ctrName = String.Format("{0}/{1}", ViewContext.RouteData.Values["controller"], ViewContext.RouteData.Values["action"]);
+                                        }
+                                        @if (Session["LoggedInUser"] != null)
+                                        {
+                                            <li @if (ctrName == "Dashboard/Index") { <text> class="active" </text>     }>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+                                            <li @if (ctrName == "Account/Logout") { <text> class="active" </text>   }>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                                           <li @if (ctrName == "Account/How_its_work") { <text> class="active" </text>   }>@Html.ActionLink("How its works", "How_its_work", "Account")</li>
+                                            <li @if (ctrName == "Account/Support") { <text> class="active" </text>    }>@Html.ActionLink("Support", "Support", "Account")</li>
+
+                                        }
+                                        else
+                                        {
+                                            <li @if (ctrName == "Account/Index") { <text> class="active" </text>     }>@Html.ActionLink("Home", "Index", "Account")</li>
+                                            <li @if (ctrName == "Account/Login") { <text> class="active" </text>     }>@Html.ActionLink("Login", "Login", "Account")</li>
+                                            <li @if (ctrName == "Account/Signup") { <text> class="active" </text>    }>@Html.ActionLink("Signup", "Signup", "Account")</li>
+                                            <li @if (ctrName == "Account/How_its_work") { <text> class="active" </text>   }>@Html.ActionLink("How its works", "How_its_work", "Account")</li>
+                                            <li @if (ctrName == "Account/Support") { <text> class="active" </text>    }>@Html.ActionLink("Support", "Support", "Account")</li>
+
+                                        }
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---header----end-->
+
+    <div>
+        @RenderBody()
+    </div>
+
+</body>
+
+
+
+
+<div class="footerwrapper">
+    <div class="container">
+        <div class="footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="fleft">
+
+                        <p>© 2019 MyListingTour.com </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="fcenter">
+                        <div>
+                            <a target="_blank" href="@Url.Action("Terms_Conditions","Account")">Terms &amp; conditions</a>,
+                            <a target="_blank" href="@Url.Action("Privacy_Policy","Account")">Privacy policy</a>
+                            <a target="_blank" href="@Url.Action("Disclaimer","Account")">Disclaimer</a>
+                        </div>
+
+                        <div class="social">
+                            <a href="#"><img src="/Assets/img/fb.png" /></a>
+                            <a href="#"><img src="/Assets/img/gg_pls.png" /></a>
+                            <a href="#"><img src="/Assets/img/tw.png" /></a>
+                            <a href="#"><img src="/Assets/img/in.png" /></a>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="fright">
+                        <a></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom_footer">
+
+</div>
+
+
+
+
+<script src="~/Assets/js/wow.min.js"></script>
+
+<script>
+    new WOW().init();
+
+</script>
+
+</html>

@@ -1,0 +1,114 @@
+﻿@model Listningtour.Models.UserPropertyViewModel
+@{
+    ViewBag.Title = "Steps2";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+@using (Html.BeginForm("Steps2","MultiSteps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+    <!----3steps---------->
+    <div class="three-steps-wrapper">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="nav nav-tabs m-tt">
+                    <li class="active"><a data-toggle="tab" href="#Step1">Step 2</a></li>
+
+                </ul>
+                <div class="tab-content">
+
+
+                    <div class="container">
+
+                        <div class="main-form">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="step-2">
+                                        <h1>Upload</h1>
+                                        <div class="row">
+                                            <div class="S1">
+                                                <form action="#">
+                                                    <div class="col-md-6">
+                                                        <div class="r-1">
+                                                            <div class="radio">
+                                                                <label><input type="radio" name="optradio">Upload Panorama Image</label>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="r-1">
+                                                            <div class="radio">
+                                                                <label><input type="radio" name="optradio">Upload Multiple Images Gallery & SlideShow</label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="S2">
+                                                <div class="col-md-12">
+                                                    
+                                                    <div class="s2-file">
+                                                        @if (Model.Images.Count() > 0)
+                                                        {
+                                                            <input type='file' onchange="@Session{readURL(this);}" name="file" id="file" multiple="multiple" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <input type='file' onchange="@Session{readURL(this);}" required name="file" id="file" multiple="multiple" />
+                                                        }
+                                                       
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="s-c">
+                                
+                                        <button type="button" onclick="backoperation()">Previous</button>
+                                        <script>function backoperation(){window.location.href = "@Url.Action("Steps1", "Multisteps")";}</script>   
+                                        <button type="submit"  value="Finish" class="btn btn-default">Preview & PubLish</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----3steps----end------>

@@ -1,0 +1,92 @@
+﻿@model Listningtour.Models.SupportModel
+@{
+    ViewBag.Title = "Support";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Support", "Account"))
+
+{
+<!----supports---------->
+<div class="supports-wrapper">
+    <div class="container">
+        <div class="supports-area">
+            <div class="login-h">
+                <h1>SUPPORT</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="usr">Name *</label>
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = Html.DisplayNameFor(m => m.Name), @class = "form-control input-lg", @required = "required" })
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="usr">Email *</label>
+                          @Html.TextBoxFor(m => m.Email, new { placeholder = Html.DisplayNameFor(m => m.Email), Id = "Email", @class = "form-control input-lg", @type = "Email", @required = "required" })
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="login-form">
+                        <div class="form-group">
+                            <label for="usr">Phone No *</label>
+                            @Html.TextBoxFor(m => m.PhoneNo, new { placeholder = Html.DisplayNameFor(m => m.PhoneNo), @class = "form-control input-lg", @required = "required" })
+                        </div>
+                        <div class="form-group">
+
+                            <label for="usr">Subject *</label>
+                            @Html.TextBoxFor(m => m.Subject, new { placeholder = Html.DisplayNameFor(m => m.Subject), @class = "form-control input-lg", @required = "required" })
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="comment">Please Describe Your Issue: *</label>
+                        @Html.TextAreaFor(m => m.DescribeYourIssue, new { placeholder = Html.DisplayNameFor(m => m.DescribeYourIssue), @rows = "5", @class = "form-control input-lg", @required = "required" })
+                    </div>
+
+                    <div class="l-btn">
+
+                        <a href="edit-profile.html">
+                            <button type="submit" value="login">Submit</button> 
+                           
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+}
+<!----supports------end---->
+
+
+<!----Sweet Alert---->
+
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/sweetalert.js"></script>
+
+@if (@ViewBag.Message != null)
+{
+    <script>
+     window.onload = function(){
+     sweetAlert("@ViewBag.Message");
+       }
+    </script>
+}
+<!----Sweet Alert End---->

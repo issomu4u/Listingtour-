@@ -1,0 +1,75 @@
+﻿@model Listningtour.Models.UserModel
+@{
+    ViewBag.Title = "Login";
+}
+
+
+
+@using (Html.BeginForm("Logins", "Account"))
+
+{
+
+  <!----login---------->
+    <div class="login-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="login-area">
+                        <div class="login-h">
+                            <h1>LOGIN</h1>
+                        </div>
+                        <div class="login-form">
+
+                            <div class="form-group">
+                                <label for="usr">Email ID</label>                     
+                                @Html.TextBoxFor(m => m.Email, new { placeholder = Html.DisplayNameFor(m => m.Email ), Id = "Email", @class = "form-control input-lg", @type = "Email", @required = "required" })                             
+                            </div>
+
+                            <div class="form-group">
+                                <label for="usr">Password</label>
+                                @Html.PasswordFor(m => m.Password, new { placeholder = Html.DisplayNameFor(m => m.Password), id = "Password", @class = "form-control input-lg", @type = "Password", @required = "required" })                               
+                            </div>
+
+                            <ul class="list-inline pull-right cf">
+
+                                <li>
+                                    <a href="#" class="text-success" onclick="location.href='@Url.Action("Signup", "Account")'">Create an account?</a>
+                                </li>
+
+                                <li>
+                                    <a href="#" onclick="location.href='@Url.Action("ForgotPassword","Account")'">Forgot Password?</a>
+                                </li>
+                              
+                            </ul>
+
+               
+
+                            <div class="l-btn">
+                                <button type="submit" value="login" class="">Login</button>
+                               
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<link href="~/Scripts/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/sweetalert.js"></script>  
+
+@if (@ViewBag.data != null)
+{
+    <script>
+     window.onload = function(){
+     sweetAlert("@ViewBag.data");
+     }
+
+    </script>
+}
